@@ -38,7 +38,7 @@ def get_config_schema():
             IncludeDir, LibraryDir, Libraries, \
             Switch, StringListOption
 
-    default_cxxflags = ['-std=c++0x']
+    default_cxxflags = [] #['-std=c++0x']
 
     if 'darwin' in sys.platform:
         import platform
@@ -53,8 +53,10 @@ def get_config_schema():
 
         default_libs = []
         default_cxxflags = default_cxxflags + [
-                '-std=c++11', '-mmacosx-version-min=10.7',
-                '-arch', 'i386', '-arch', 'x86_64'
+                '-std=c++11', #'-stdlib=libc++',
+                '-mmacosx-version-min=10.7',
+                '-arch', 'i386',
+                '-arch', 'x86_64'
                 ]
 
         from os.path import isdir
@@ -66,6 +68,7 @@ def get_config_schema():
         default_ldflags = default_cxxflags[:] + ["-Wl,-framework,OpenCL"]
 
     else:
+        default_cxxflags = default_cxxflags + ['-std=c++0x']
         default_libs = ["OpenCL"]
         default_ldflags = []
 
