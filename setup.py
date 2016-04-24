@@ -55,7 +55,7 @@ def get_config_schema():
         default_cxxflags = default_cxxflags + [
                 '-std=c++11', #'-stdlib=libc++',
                 '-mmacosx-version-min=10.7',
-                '-arch', 'i386',
+                #'-arch', 'i386',
                 '-arch', 'x86_64'
                 ]
 
